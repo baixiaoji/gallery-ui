@@ -19,7 +19,7 @@
         default: 'left',
         validator(val) {
           return val === 'left' || val === 'right';
-        }
+        },
       },
     },
   };
@@ -39,20 +39,26 @@
     border-color: var(--border-color-hover);
     vertical-align: middle;
     cursor: pointer;
+    
     &:hover {
       border-color: var(--border-color-hover);
     }
+    
     &:active {
       background-color: var(--button-active-bg);
     }
+    
     &:focus {
       outline: none
     }
+    
     > .content { order: 2; }
+    
     > .icon { order: 1; margin-right: .1em; }
     
     &.icon-right {
       > .content { order: 1; }
+      
       > .icon { order: 2; margin-right: 0; margin-left: .1em; }
     }
   }
