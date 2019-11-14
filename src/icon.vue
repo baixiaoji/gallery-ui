@@ -1,5 +1,5 @@
 <template>
-  <svg class='gallery-icon'>
+  <svg class='g-icon'>
     <use :xlink:href='`#icon-${name}`'></use>
   </svg>
 </template>
@@ -16,7 +16,7 @@
 </script>
 
 <style lang='scss'>
-  .gallery-icon {
+  .g-icon {
     width: 1em;
     height: 1em;
   }
