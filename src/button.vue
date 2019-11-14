@@ -1,8 +1,6 @@
 <template>
   <button class="g-button" :class='{[`icon-${iconPosition}`]: true}'>
-    <svg class='icon' v-if='icon'>
-      <use :xlink:href='`#icon-${icon}`'></use>
-    </svg>
+    <gallery-icon class='icon' v-if='icon' :name='icon'></gallery-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -10,8 +8,12 @@
 </template>
 
 <script>
+  import icon from './icon';
   export default {
-    name: 'g-button',
+    name: 'gallery-button',
+    components: {
+      'gallery-icon': icon,
+    },
     props: {
       icon: {type: String},
       iconPosition: {
