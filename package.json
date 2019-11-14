@@ -5,5 +5,8 @@
   "main": "index.js",
   "repository": "git@github.com:baixiaoji/gallery-ui.git",
   "author": "baixiaoji",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }
