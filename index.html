@@ -27,6 +27,11 @@
 </head>
 <body>
 <div id="app">
+  <div class="box">
+    <g-input v-model="message"></g-input>
+    <p>{{message}}</p>
+    <button @click="message+=1">+1</button>
+  </div>
   <g-button :loading='loading1' @click='loading1 = !loading1'>按钮</g-button>
   <g-button :loading='loading2' @click='loading2 = !loading2' icon='setting'>按钮</g-button>
   <g-button :loading='loading3' @click='loading3 = !loading3' icon='setting' icon-position='right'>按钮</g-button>
@@ -37,7 +42,6 @@
     <g-button icon="right" icon-position="right">下一页</g-button>
   </g-button-group>
 </div>
-<script src='//at.alicdn.com/t/font_1508927_yrw9uoa2a2e.js'></script>
 <script src="./src/app.js"></script>
 </body>
 </html>

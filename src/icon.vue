@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  import './svg';
   export default {
     name: 'gallery-icon',
     props: {
