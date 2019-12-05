@@ -3,8 +3,8 @@ import Button from './button.vue';
 import Icon from './icon.vue';
 import ButtonGroup from './button-group.vue';
 import Input from './input';
-import Row from './row';
-import Col from './col';
+import Row from './grid/row';
+import Col from './grid/col';
 
 Vue.component('g-button', Button);
 Vue.component('g-icon', Icon);
