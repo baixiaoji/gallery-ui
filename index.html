@@ -35,16 +35,30 @@
 <body>
 <div id="app">
   <div class="box">
-    <g-row>
+    <g-row align='right'>
       <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>
       <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>
       <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>
       <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>
     </g-row>
     <g-row gutter='20'>
-      <g-col>1</g-col>
-      <g-col>2</g-col>
-      <g-col>3</g-col>
+      <g-col span='10'>
+        <g-row align='left'>
+          <g-col>1</g-col>
+          <g-col>2</g-col>
+          <g-col>3</g-col>
+        </g-row>
+      </g-col>
+      <g-col span='14'>
+        <g-row align='right'>
+          <g-col>1</g-col>
+          <g-col>2</g-col>
+          <g-col>3</g-col>
+          <g-col>4</g-col>
+          <g-col>5</g-col>
+        </g-row>
+      </g-col>
+      
     </g-row>
     <g-row gutter='20'>
       <g-col span='2'>1</g-col>
