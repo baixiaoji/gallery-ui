@@ -17,9 +17,6 @@
       --border-color: #999;
       --border-color-hover: #666;
     }
-    #app {
-      margin: 20px;
-    }
     body {
       font-size: var(--font-size);
     }
@@ -30,10 +27,45 @@
       border: 1px solid black;
       margin-bottom: 10px;
     }
+    .header {
+      height: 50px;
+      background: #333333;
+    }
+    .main{
+      background: #666666;
+    }
+    .footer{
+      height: 50px;
+      background: #333333;
+    }
   </style>
 </head>
 <body>
 <div id="app">
+  <g-layout style='height: 50vh;'>
+    <g-header></g-header>
+    <g-layout>
+      <g-aside style='width: 200px;'></g-aside>
+      <g-main></g-main>
+    </g-layout>
+    <g-footer></g-footer>
+  </g-layout>
+  
+  <g-layout style='height: 50vh;'>
+    <g-aside style='width: 200px;'></g-aside>
+    <g-layout>
+      <g-header></g-header>
+      <g-main></g-main>
+      <g-footer></g-footer>
+    </g-layout>
+  </g-layout>
+  
+  <g-layout style='height: 50vh;'>
+      <g-header></g-header>
+      <g-main></g-main>
+      <g-footer></g-footer>
+  </g-layout>
+  
   <div class="box">
     <g-row align='right'>
       <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>
