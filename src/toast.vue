@@ -1,9 +1,12 @@
 <template>
-  <div class="toast">
+  <div class="toast" ref='toastWrapper'>
     <slot></slot>
-    <span class='close' v-if='closeButton && closeButton.text' @click='onClickClose'>
+    <template v-if='closeButton && closeButton.text'>
+      <span class="line" ref='line'></span>
+      <span class='close' @click='onClickClose'>
       {{ closeButton.text }}
     </span>
+    </template>
   </div>
 </template>
 
@@ -25,8 +28,17 @@
     },
     mounted() {
       this.checkAutoClose();
+      this.initLineStyle();
     },
     methods: {
+      initLineStyle() {
+        if (typeof this.$refs.line === 'undefined') {
+          return;
+        }
+        this.$nextTick(() => {
+          this.$refs.line.style.height = `${this.$refs.toastWrapper.getBoundingClientRect().height}px`
+        })
+      },
       checkAutoClose() {
         if (this.autoClose) {
           setTimeout(() => {
@@ -66,9 +78,14 @@
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.50);
     
     .close {
-      margin-left: 13px;
+      padding-left: 16px;
       cursor: pointer;
       flex-shrink: 0;
+    }
+    .line {
+      height: 100%;
+      border-left: 1px solid #666;
+      margin-left: 16px;
     }
   }
 </style>
