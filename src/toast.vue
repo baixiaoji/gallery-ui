@@ -1,6 +1,9 @@
 <template>
   <div class="toast">
     <slot></slot>
+    <span class='close' v-if='closeButton && closeButton.text' @click='onClickClose'>
+      {{ closeButton.text }}
+    </span>
   </div>
 </template>
 
@@ -11,6 +14,9 @@
       autoClose: {
         type: Boolean,
         default: false,
+      },
+      closeButton: {
+        type: Object,
       },
       delayCloseTime: {
         type: Number,
@@ -24,9 +30,18 @@
       checkAutoClose() {
         if (this.autoClose) {
           setTimeout(() => {
-            this.$el.remove();
-            this.$destroy();
+            this.close();
           }, this.delayCloseTime);
+        }
+      },
+      close() {
+        this.$el.remove();
+        this.$destroy();
+      },
+      onClickClose() {
+        this.close();
+        if (this.closeButton && typeof this.closeButton.callback === 'function') {
+          this.closeButton.callback();
         }
       },
     },
@@ -49,5 +64,11 @@
     padding: 0 16px;
     background: $Toast-bg;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.50);
+    
+    .close {
+      margin-left: 13px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
   }
 </style>

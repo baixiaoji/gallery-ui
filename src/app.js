@@ -43,8 +43,14 @@ new Vue({
   },
   methods: {
     showToast() {
-      this.$toast('你好', {
+      this.$toast('你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好', {
         autoClose: true,
+        closeButton: {
+          text: '我知道',
+          callback() {
+            console.log('我关闭了');
+          },
+        },
         // delayCloseTime: 1500,
       })
     },
