@@ -35,7 +35,7 @@
     },
     mounted() {
       this.checkAutoClose();
-      this.initLineStyle();
+      // this.initLineStyle();
     },
     methods: {
       initLineStyle() {
@@ -93,9 +93,9 @@
       flex-shrink: 0;
     }
     .line {
-      height: 100%;
       border-left: 1px solid #666;
       margin-left: 16px;
+      align-self: stretch;
     }
   }
 </style>
