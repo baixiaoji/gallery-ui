@@ -10,6 +10,8 @@ import Header from './header';
 import Main from './main';
 import Footer from './footer';
 import Aside from './aside';
+import Toast from './toast'
+import plugin from './plugin';
 
 Vue.component('g-button', Button);
 Vue.component('g-icon', Icon);
@@ -22,6 +24,9 @@ Vue.component('g-header', Header);
 Vue.component('g-main', Main);
 Vue.component('g-footer', Footer);
 Vue.component('g-aside', Aside);
+Vue.component('g-toast', Toast);
+
+Vue.use(plugin);
 
 new Vue({
   el: '#app',
@@ -32,5 +37,13 @@ new Vue({
       loading2: false,
       loading3: false,
     };
+  },
+  mounted() {
+    this.showToast();
+  },
+  methods: {
+    showToast() {
+      this.$toast('你好', {})
+    },
   },
 });

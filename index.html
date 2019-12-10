@@ -42,87 +42,87 @@
 </head>
 <body>
 <div id="app">
-  <g-layout style='height: 50vh;'>
-    <g-header></g-header>
-    <g-layout>
-      <g-aside style='width: 200px;'></g-aside>
-      <g-main></g-main>
-    </g-layout>
-    <g-footer></g-footer>
-  </g-layout>
-  
-  <g-layout style='height: 50vh;'>
-    <g-aside style='width: 200px;'></g-aside>
-    <g-layout>
-      <g-header></g-header>
-      <g-main></g-main>
-      <g-footer></g-footer>
-    </g-layout>
-  </g-layout>
-  
-  <g-layout style='height: 50vh;'>
-      <g-header></g-header>
-      <g-main></g-main>
-      <g-footer></g-footer>
-  </g-layout>
-  
-  <div class="box">
-    <g-row align='right'>
-      <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>
-      <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>
-      <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>
-      <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>
-    </g-row>
-    <g-row gutter='20'>
-      <g-col span='10'>
-        <g-row align='left'>
-          <g-col>1</g-col>
-          <g-col>2</g-col>
-          <g-col>3</g-col>
-        </g-row>
-      </g-col>
-      <g-col span='14'>
-        <g-row align='right'>
-          <g-col>1</g-col>
-          <g-col>2</g-col>
-          <g-col>3</g-col>
-          <g-col>4</g-col>
-          <g-col>5</g-col>
-        </g-row>
-      </g-col>
-      
-    </g-row>
-    <g-row gutter='20'>
-      <g-col span='2'>1</g-col>
-      <g-col span='22'>2</g-col>
-    </g-row>
-    <g-row gutter='20'>
-      <g-col span='8'>1</g-col>
-      <g-col span='6' offset='2'>2</g-col>
-      <g-col span='8'>3</g-col>
-    </g-row>
-    <g-row gutter='20'>
-      <g-col span='6'>1</g-col>
-      <g-col span='4' offset='2'>2</g-col>
-      <g-col span='6'>3</g-col>
-      <g-col span='6'>4</g-col>
-    </g-row>
 
-  </div>
-  <div class="box">
-    <g-input v-model="message"></g-input>
-    <p>{{message}}</p>
-    <button @click="message+=1">+1</button>
-  </div>
-  <g-button :loading='loading1' @click='loading1 = !loading1'>按钮</g-button>
-  <g-button :loading='loading2' @click='loading2 = !loading2' icon='setting'>按钮</g-button>
-  <g-button :loading='loading3' @click='loading3 = !loading3' icon='setting' icon-position='right'>按钮</g-button>
-  <g-icon name='download'></g-icon>
-  <g-button-group>
-    <g-button icon="left">上一页</g-button>
-    <g-button>更多</g-button>
-    <g-button icon="right" icon-position="right">下一页</g-button>
-  </g-button-group>
+<!--  <g-layout style='height: 50vh;'>-->
+<!--    <g-header></g-header>-->
+<!--    <g-layout>-->
+<!--      <g-aside style='width: 200px;'></g-aside>-->
+<!--      <g-main></g-main>-->
+<!--    </g-layout>-->
+<!--    <g-footer></g-footer>-->
+<!--  </g-layout>-->
+<!--  -->
+<!--  <g-layout style='height: 50vh;'>-->
+<!--    <g-aside style='width: 200px;'></g-aside>-->
+<!--    <g-layout>-->
+<!--      <g-header></g-header>-->
+<!--      <g-main></g-main>-->
+<!--      <g-footer></g-footer>-->
+<!--    </g-layout>-->
+<!--  </g-layout>-->
+<!--  -->
+<!--  <g-layout style='height: 50vh;'>-->
+<!--      <g-header></g-header>-->
+<!--      <g-main></g-main>-->
+<!--      <g-footer></g-footer>-->
+<!--  </g-layout>-->
+<!--  <div class="box">-->
+<!--    <g-row align='right'>-->
+<!--      <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>-->
+<!--      <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>-->
+<!--      <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>-->
+<!--      <g-col span='24' :ipad='{span: 12}' :pc='{span: 6}'>1</g-col>-->
+<!--    </g-row>-->
+<!--    <g-row gutter='20'>-->
+<!--      <g-col span='10'>-->
+<!--        <g-row align='left'>-->
+<!--          <g-col>1</g-col>-->
+<!--          <g-col>2</g-col>-->
+<!--          <g-col>3</g-col>-->
+<!--        </g-row>-->
+<!--      </g-col>-->
+<!--      <g-col span='14'>-->
+<!--        <g-row align='right'>-->
+<!--          <g-col>1</g-col>-->
+<!--          <g-col>2</g-col>-->
+<!--          <g-col>3</g-col>-->
+<!--          <g-col>4</g-col>-->
+<!--          <g-col>5</g-col>-->
+<!--        </g-row>-->
+<!--      </g-col>-->
+<!--      -->
+<!--    </g-row>-->
+<!--    <g-row gutter='20'>-->
+<!--      <g-col span='2'>1</g-col>-->
+<!--      <g-col span='22'>2</g-col>-->
+<!--    </g-row>-->
+<!--    <g-row gutter='20'>-->
+<!--      <g-col span='8'>1</g-col>-->
+<!--      <g-col span='6' offset='2'>2</g-col>-->
+<!--      <g-col span='8'>3</g-col>-->
+<!--    </g-row>-->
+<!--    <g-row gutter='20'>-->
+<!--      <g-col span='6'>1</g-col>-->
+<!--      <g-col span='4' offset='2'>2</g-col>-->
+<!--      <g-col span='6'>3</g-col>-->
+<!--      <g-col span='6'>4</g-col>-->
+<!--    </g-row>-->
+
+<!--  </div>-->
+<!--  <div class="box">-->
+<!--    <g-input v-model="message"></g-input>-->
+<!--    <p>{{message}}</p>-->
+<!--    <button @click="message+=1">+1</button>-->
+<!--  </div>-->
+<!--  <g-button :loading='loading1' @click='loading1 = !loading1'>按钮</g-button>-->
+<!--  <g-button :loading='loading2' @click='loading2 = !loading2' icon='setting'>按钮</g-button>-->
+<!--  <g-button :loading='loading3' @click='loading3 = !loading3' icon='setting' icon-position='right'>按钮</g-button>-->
+<!--  <g-icon name='download'></g-icon>-->
+<!--  <g-button-group>-->
+<!--    <g-button icon="left">上一页</g-button>-->
+<!--    <g-button>更多</g-button>-->
+<!--    <g-button icon="right" icon-position="right">下一页</g-button>-->
+<!--  </g-button-group>-->
 </div>
 <script src="./src/app.js"></script>
 </body>
