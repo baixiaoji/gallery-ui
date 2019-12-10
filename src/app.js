@@ -38,20 +38,33 @@ new Vue({
       loading3: false,
     };
   },
-  mounted() {
-    this.showToast();
-  },
   methods: {
     showToast() {
-      this.$toast('你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好', {
+      this.$toast('你好呀', {
         autoClose: true,
+      })
+    },
+    showToastHasCustomButton() {
+      this.$toast('你好呀', {
+        autoClose: false,
         closeButton: {
-          text: '我知道',
+          text: '关闭',
           callback() {
-            console.log('我关闭了');
+            console.log('触发回调');
           },
         },
-        // delayCloseTime: 1500,
+      })
+    },
+    showEnableHtmlToast() {
+      this.$toast('你真的<b>好</b>吗？', {
+        autoClose: false,
+        enableHtml: true,
+        closeButton: {
+          text: '关闭',
+          callback() {
+            console.log('触发回调');
+          },
+        },
       })
     },
   },

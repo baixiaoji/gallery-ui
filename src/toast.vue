@@ -1,8 +1,11 @@
 <template>
   <div class="toast" ref='toastWrapper'>
-    <slot></slot>
+    <div class="message">
+      <slot v-if='!enableHtml'></slot>
+      <div v-else v-html='$slots.default[0]'></div>
+    </div>
     <template v-if='closeButton && closeButton.text'>
-      <span class="line" ref='line'></span>
+      <div class="line" ref='line'></div>
       <span class='close' @click='onClickClose'>
       {{ closeButton.text }}
     </span>
@@ -24,6 +27,10 @@
       delayCloseTime: {
         type: Number,
         default: 3000,
+      },
+      enableHtml: {
+        type: Boolean,
+        default: false,
       },
     },
     mounted() {
@@ -77,6 +84,9 @@
     background: $Toast-bg;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.50);
     
+    .message {
+      padding: 8px 0;
+    }
     .close {
       padding-left: 16px;
       cursor: pointer;
