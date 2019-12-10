@@ -43,7 +43,10 @@ new Vue({
   },
   methods: {
     showToast() {
-      this.$toast('你好', {})
+      this.$toast('你好', {
+        autoClose: true,
+        // delayCloseTime: 1500,
+      })
     },
   },
 });
