@@ -14,7 +14,7 @@
       align: {
         type: String,
         validator(val) {
-          return ['left', 'center', 'right'].includes(val);
+          return ['left', 'center', 'right'].indexOf(val) >= 0;
         }
       },
     },

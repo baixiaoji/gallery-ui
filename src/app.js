@@ -41,12 +41,14 @@ new Vue({
   methods: {
     showToast() {
       this.$toast('你好呀', {
-        autoClose: true,
+        autoClose: false,
+        position: 'top',
       })
     },
     showToastHasCustomButton() {
       this.$toast('你好呀', {
         autoClose: false,
+        position: 'middle',
         closeButton: {
           text: '关闭',
           callback() {
@@ -59,6 +61,7 @@ new Vue({
       this.$toast('你真的<b>好</b>吗？', {
         autoClose: false,
         enableHtml: true,
+        position: 'bottom',
         closeButton: {
           text: '关闭',
           callback() {
