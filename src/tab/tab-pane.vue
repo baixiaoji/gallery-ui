@@ -18,6 +18,6 @@
 
 <style scoped>
   .tab-pane {
-  
+    padding: 1em;
   }
 </style>

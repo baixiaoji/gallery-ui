@@ -21,6 +21,10 @@
     min-height: $tab-head-height;
     > .action-wrapper {
       margin-left: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 1em;
     }
   }
 </style>
