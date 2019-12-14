@@ -33,7 +33,7 @@
     },
     methods: {
       onClick() {
-        this.eventBus.$emit('update:selected', this.name);
+        this.eventBus.$emit('update:selected', this.name, this);
       },
     },
   };
@@ -48,8 +48,7 @@
     padding: 0 2em;
     
     &.active {
-      background: red;
-      color: white;
+    
     }
   }
 </style>

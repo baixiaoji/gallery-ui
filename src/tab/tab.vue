@@ -26,7 +26,17 @@
       }
     },
     mounted() {
-      this.eventBus.$emit('update:selected', this.selected);
+      
+      this.$children.forEach(vm => {
+        if (vm.$options.name === 'GUI-Head') {
+          vm.$children.forEach(childVM => {
+            console.log(childVM.name, this.selected);
+            if (childVM.name === this.selected) {
+              this.eventBus.$emit('update:selected', this.selected, childVM);
+            }
+          })
+        }
+      })
     }
   };
 </script>
