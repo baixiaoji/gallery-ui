@@ -42,9 +42,27 @@
 </head>
 <body>
 <div id="app">
-  <g-button @click='showToast'>Toast1</g-button>
-  <g-button @click='showToastHasCustomButton'>Toast2</g-button>
-  <g-button @click='showEnableHtmlToast'>Toast3</g-button>
+  <g-tab>
+    <g-tab-head :selected.sync='selectTab'>
+      <g-tab-item name='fontEnd'>
+        <g-icon name='download'></g-icon>前端
+      </g-tab-item>
+      <g-tab-item name='backEnd'>后端</g-tab-item>
+      <g-tab-item name='operation'>运维</g-tab-item>
+      
+      <div slot='action'>
+        <button>测试</button>
+      </div>
+    </g-tab-head>
+    <g-tab-body>
+      <g-tab-pane name='fontEnd'>前端的资讯内容</g-tab-pane>
+      <g-tab-pane  name='backEnd'>后端的资讯内容</g-tab-pane>
+      <g-tab-pane name='operation'>运营的资讯内容</g-tab-pane>
+    </g-tab-body>
+  </g-tab>
+<!--  <g-button @click='showToast'>Toast1</g-button>-->
+<!--  <g-button @click='showToastHasCustomButton'>Toast2</g-button>-->
+<!--  <g-button @click='showEnableHtmlToast'>Toast3</g-button>-->
 <!--  <g-layout style='height: 50vh;'>-->
 <!--    <g-header></g-header>-->
 <!--    <g-layout>-->
