@@ -35,17 +35,8 @@
     },
     mounted() {
       this.checkAutoClose();
-      // this.initLineStyle();
     },
     methods: {
-      initLineStyle() {
-        if (typeof this.$refs.line === 'undefined') {
-          return;
-        }
-        this.$nextTick(() => {
-          this.$refs.line.style.height = `${this.$refs.toastWrapper.getBoundingClientRect().height}px`
-        })
-      },
       checkAutoClose() {
         if (this.autoClose) {
           setTimeout(() => {
@@ -55,6 +46,7 @@
       },
       close() {
         this.$el.remove();
+        this.$emit('close');
         this.$destroy();
       },
       onClickClose() {
