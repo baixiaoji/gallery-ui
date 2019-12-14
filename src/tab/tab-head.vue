@@ -1,7 +1,7 @@
 <template>
   <div class="tab-head">
     <slot></slot>
-    <div class='action-wrapper'>
+    <div v-if='$slots.action' class='action-wrapper'>
       <slot name='action'></slot>
     </div>
   </div>
@@ -10,12 +10,6 @@
 <script>
   export default {
     name: 'GUI-Head',
-    inject: ['eventBus'],
-    mounted() {
-      // this.eventBus.$on('update:selected', (name) => {
-      //   console.log(name);
-      // })
-    }
   };
 </script>
 
