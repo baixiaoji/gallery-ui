@@ -12,6 +12,10 @@
         type: [String, Number],
         required: true,
       },
+      disabled: {
+        type: Boolean,
+        default: false,
+      },
     },
     inject: ['eventBus'],
     data() {
@@ -23,6 +27,7 @@
       tabItemClasses() {
         return {
           active: this.active,
+          disabled: this.disabled,
         }
       },
     },
@@ -33,6 +38,7 @@
     },
     methods: {
       onClick() {
+        if (this.disabled) return;
         this.eventBus.$emit('update:selected', this.name, this);
       },
     },
@@ -49,6 +55,10 @@
     
     &.active {
     
+    }
+    
+    &.disabled {
+      cursor: not-allowed;
     }
   }
 </style>
