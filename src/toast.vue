@@ -20,15 +20,14 @@
     name: 'GUI-Toast',
     props: {
       autoClose: {
-        type: Boolean,
-        default: false,
+        type: [Boolean, Number],
+        default: 3000,
+        validator(value) {
+          return value === false || typeof value === 'number';
+        }
       },
       closeButton: {
         type: Object,
-      },
-      delayCloseTime: {
-        type: Number,
-        default: 3000,
       },
       enableHtml: {
         type: Boolean,
@@ -57,7 +56,7 @@
         if (this.autoClose) {
           setTimeout(() => {
             this.close();
-          }, this.delayCloseTime);
+          }, this.autoClose);
         }
       },
       close() {
