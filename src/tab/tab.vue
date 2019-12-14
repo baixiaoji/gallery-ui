@@ -5,6 +5,8 @@
 </template>
 
 <script>
+  import Vue from 'vue';
+  
   export default {
     name: 'GUI-Tab',
     props: {
@@ -13,6 +15,19 @@
         require: true,
       },
     },
+    data() {
+      return {
+        eventBus: new Vue(),
+      }
+    },
+    provide() {
+      return {
+        eventBus: this.eventBus,
+      }
+    },
+    mounted() {
+    
+    }
   };
 </script>
 

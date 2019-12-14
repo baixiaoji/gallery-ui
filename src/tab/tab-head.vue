@@ -10,7 +10,12 @@
 <script>
   export default {
     name: 'GUI-Head',
-    props: {},
+    inject: ['eventBus'],
+    mounted() {
+      // this.eventBus.$on('update:selected', (name) => {
+      //   console.log(name);
+      // })
+    }
   };
 </script>
 

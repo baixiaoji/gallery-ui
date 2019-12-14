@@ -1,5 +1,5 @@
 <template>
-  <div class="tab-pane">
+  <div class="tab-pane" v-if='active'>
     <slot></slot>
   </div>
 </template>
@@ -13,6 +13,17 @@
         required: true,
       },
     },
+    inject: ['eventBus'],
+    data() {
+      return {
+        active: false,
+      }
+    },
+    mounted() {
+      this.eventBus.$on('update:selected', (name) => {
+        this.active = name === this.name;
+      })
+    }
   };
 </script>
 
