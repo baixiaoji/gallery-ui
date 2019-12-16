@@ -30,11 +30,11 @@ Vue.component('g-main', Main);
 Vue.component('g-footer', Footer);
 Vue.component('g-aside', Aside);
 Vue.component('g-toast', Toast);
-Vue.component('g-tab', Tab);
-Vue.component('g-tab-head', TabHead);
-Vue.component('g-tab-item', TabItem);
-Vue.component('g-tab-body', TabBody);
-Vue.component('g-tab-pane', TabPane);
+Vue.component('g-tabs', Tab);
+Vue.component('g-tabs-head', TabHead);
+Vue.component('g-tabs-item', TabItem);
+Vue.component('g-tabs-body', TabBody);
+Vue.component('g-tabs-pane', TabPane);
 
 Vue.use(plugin);
 
