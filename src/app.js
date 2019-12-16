@@ -12,11 +12,11 @@ import Footer from './footer';
 import Aside from './aside';
 import Toast from './toast'
 import plugin from './plugin';
-import Tab from './tab/tab';
-import TabHead from './tab/tab-head';
-import TabItem from './tab/tab-item';
-import TabBody from './tab/tab-body';
-import TabPane from './tab/tab-pane';
+import Tab from './tabs/tabs';
+import TabHead from './tabs/tabs-head';
+import TabItem from './tabs/tabs-item';
+import TabBody from './tabs/tabs-body';
+import TabPane from './tabs/tabs-pane';
 
 Vue.component('g-button', Button);
 Vue.component('g-icon', Icon);
