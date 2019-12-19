@@ -52,6 +52,9 @@ new Vue({
     };
   },
   methods: {
+    yyy() {
+      console.log('yyy');
+    },
     showToast() {
       this.$toast('你好呀', {
         autoClose: false,
