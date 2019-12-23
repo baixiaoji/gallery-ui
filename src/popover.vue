@@ -38,22 +38,27 @@
         const {contentWrapper, triggerWrapper} = this.$refs;
         document.body.append(contentWrapper);
         const {top, left, height, width} = triggerWrapper.getBoundingClientRect();
-        if (this.position === 'top') {
-          contentWrapper.style.left = left + window.scrollX + 'px';
-          contentWrapper.style.top = top + window.scrollY + 'px';
-        } else if(this.position === 'bottom') {
-          contentWrapper.style.left = left + window.scrollX + 'px';
-          contentWrapper.style.top = top + window.scrollY + height + 'px';
-        } else if (this.position === 'left') {
-          const {height: contentHeight} = contentWrapper.getBoundingClientRect();
-          contentWrapper.style.left = left + window.scrollX + 'px';
-          contentWrapper.style.top = top + window.scrollY + (height - contentHeight)/2 + 'px';
-        } else if (this.position === 'right') {
-          const {height: contentHeight} = contentWrapper.getBoundingClientRect();
-          contentWrapper.style.left = left + window.scrollX + width + 'px';
-          contentWrapper.style.top = top + window.scrollY + (height - contentHeight)/2 + 'px';
-        }
-        
+        const {height: contentHeight} = contentWrapper.getBoundingClientRect();
+        const positions = {
+          top: {
+            left: left + window.scrollX,
+            top: top + window.scrollY
+          },
+          bottom: {
+            left: left + window.scrollX,
+            top: top + window.scrollY + height,
+          },
+          right: {
+            left: left + width + window.scrollX,
+            top: top + window.scrollY + (height - contentHeight)/2
+          },
+          left: {
+            left: left + window.scrollX,
+            top: top + window.scrollY + (height - contentHeight)/2
+          },
+        };
+        contentWrapper.style.left = positions[this.position].left + 'px';
+        contentWrapper.style.top = positions[this.position].top + 'px';
       },
       documentListener(e) {
         if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) {
