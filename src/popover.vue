@@ -107,6 +107,8 @@
     border-radius: $border-radius;
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
     padding: 0.5em 1em;
+    max-width: 20em;
+    word-break: break-all;
     background: white;
     
     &::before, &::after {
