@@ -56,6 +56,8 @@
 </script>
 
 <style scoped lang='scss'>
+  $border-color: #333;
+  $border-radius: 4px;
   .popover {
     display: inline-block;
     
@@ -66,7 +68,10 @@
   
   .content-wrapper {
     position: absolute;
-    border: 1px solid red;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    box-shadow: 0 0 1px rgba(0,0,0,.3);
+    padding: 0.5em 1em;
     transform: translateY(-100%);
   }
 </style>
