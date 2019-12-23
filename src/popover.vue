@@ -19,10 +19,11 @@
     },
     methods: {
       positionContentWrapper() {
-        document.body.append(this.$refs.contentWrapper);
-        const {top, left} = this.$refs.triggerWrapper.getBoundingClientRect();
-        this.$refs.contentWrapper.style.left = left + window.scrollX + 'px';
-        this.$refs.contentWrapper.style.top = top + window.scrollY + 'px';
+        const {contentWrapper, triggerWrapper} = this.$refs;
+        document.body.append(contentWrapper);
+        const {top, left} = triggerWrapper.getBoundingClientRect();
+        contentWrapper.style.left = left + window.scrollX + 'px';
+        contentWrapper.style.top = top + window.scrollY + 'px';
       },
       documentListener(e) {
         if (this.$refs.popover && (this.$refs.popover === e.target || this.$refs.popover.contains(e.target))) {
