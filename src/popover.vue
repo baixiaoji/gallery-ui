@@ -1,6 +1,6 @@
 <template>
   <div class='popover' ref='popover' @click='onClickHandler'>
-    <div class="content-wrapper" ref='contentWrapper' v-show='visible' @click.stop>
+    <div class="content-wrapper" :class='contentWrapper' ref='contentWrapper' v-show='visible' @click.stop>
       <slot name='content'></slot>
     </div>
     <span ref='triggerWrapper' class='trigger-wrapper'>
@@ -16,6 +16,22 @@
       return {
         visible: false,
       };
+    },
+    props: {
+      position: {
+        type: String,
+        default: 'top',
+        validator(val) {
+          return ['top', 'bottom', 'right', 'left'].indexOf(val) >= 0;
+        },
+      },
+    },
+    computed: {
+      contentWrapper() {
+        return {
+          [`position-${this.position}`]: true,
+        }
+      },
     },
     methods: {
       positionContentWrapper() {
@@ -72,6 +88,31 @@
     border-radius: $border-radius;
     box-shadow: 0 0 1px rgba(0,0,0,.3);
     padding: 0.5em 1em;
-    transform: translateY(-100%);
+    &.position-top {
+      transform: translateY(-100%);
+      margin-top: -10px;
+      
+      &::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 100%;
+        border: 10px solid transparent;
+        border-top-color: $border-color;
+      }
+  
+      &::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: calc(100% - 1px);
+        border: 10px solid transparent;
+        border-top-color: white;
+      }
+    }
   }
 </style>
