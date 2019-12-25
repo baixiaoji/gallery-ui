@@ -1,6 +1,6 @@
 <template>
   <div class='popover' ref='popover'>
-    <div class="content-wrapper" :class='contentWrapper' ref='contentWrapper' v-show='visible' @click.stop>
+    <div class="content-wrapper" :class='contentWrapper' ref='contentWrapper' v-if='visible' @click.stop>
       <slot name='content'></slot>
     </div>
     <span ref='triggerWrapper' class='trigger-wrapper'>
