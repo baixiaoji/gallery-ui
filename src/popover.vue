@@ -1,5 +1,5 @@
 <template>
-  <div class='popover' ref='popover' @click='onClickHandler'>
+  <div class='popover' ref='popover'>
     <div class="content-wrapper" :class='contentWrapper' ref='contentWrapper' v-show='visible' @click.stop>
       <slot name='content'></slot>
     </div>
@@ -25,6 +25,13 @@
           return ['top', 'bottom', 'right', 'left'].indexOf(val) >= 0;
         },
       },
+      trigger: {
+        type: String,
+        default: 'click',
+        validator(val) {
+          return ['click', 'hover'].indexOf(val) >= 0;
+        }
+      },
     },
     computed: {
       contentWrapper() {
@@ -32,6 +39,24 @@
           [`position-${this.position}`]: true,
         }
       },
+    },
+    mounted() {
+      const {popover} = this.$refs;
+      if (this.trigger === 'click') {
+        popover.addEventListener('click',  this.onClickHandler);
+      } else if (this.trigger === 'hover') {
+        popover.addEventListener('mouseenter', this.open);
+        popover.addEventListener('mouseleave', this.close);
+      }
+    },
+    destroyed() {
+      const {popover} = this.$refs;
+      if (this.trigger === 'click') {
+        popover.removeEventListener('click',  this.onClickHandler);
+      } else if (this.trigger === 'hover') {
+        popover.removeEventListener('mouseenter', this.open);
+        popover.removeEventListener('mouseleave', this.close);
+      }
     },
     methods: {
       positionContentWrapper() {
@@ -90,6 +115,10 @@
   };
 </script>
 
+
+
+
+
 <style scoped lang='scss'>
   $border-color: #333;
   $border-radius: 4px;
@@ -127,44 +156,51 @@
         top: 100%;
         border: 10px solid transparent;
         border-top-color: $border-color;
+        border-bottom: none;
       }
       &::after {
         top: calc(100% - 1px);
         border: 10px solid transparent;
         border-top-color: white;
+        border-bottom: none;
       }
     }
     &.position-bottom {
       margin-top: 10px;
-    
+      
       &::before {
         bottom: 100%;
         border: 10px solid transparent;
         border-bottom-color: $border-color;
+        border-top: none;
       }
       &::after {
         bottom: calc(100% - 1px);
         border: 10px solid transparent;
         border-bottom-color: white;
+        border-top: none;
       }
     }
-  
+    
     &.position-left {
       transform: translateX(-100%);
       margin-left: -10px;
       &::before, &::after {
         transform: translateY(-50%);
         top: 50%;
+        
       }
       &::before {
         left: 100%;
         border: 10px solid transparent;
         border-left-color: $border-color;
+        border-right: none;
       }
       &::after {
         left: calc(100% - 1px);
         border: 10px solid transparent;
         border-left-color: white;
+        border-right: none;
       }
     }
     &.position-right {
@@ -177,11 +213,13 @@
         right: 100%;
         border: 10px solid transparent;
         border-right-color: $border-color;
+        border-left: none;
       }
       &::after {
         right: calc(100% - 1px);
         border: 10px solid transparent;
         border-right-color: white;
+        border-left: none;
       }
     }
   }
