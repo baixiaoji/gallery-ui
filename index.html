@@ -44,48 +44,32 @@
 </head>
 <body>
 <div id="app">
-  <div class="popover-wrapper" @click='yyy'>
-    <g-popover>
-      <p slot='content'>点击展开看这个</p>
-      <g-button>点我</g-button>
-    </g-popover>
-  
-    <g-popover position='bottom'>
-      <p slot='content'>点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个</p>
-      <g-button>点我</g-button>
-    </g-popover>
-  
-    <g-popover position='left'>
-      <p slot='content'>点击展开看这个</p>
-      <g-button>点我</g-button>
-    </g-popover>
-  
-    <g-popover position='right'>
-      <p slot='content'>点击展开看这个</p>
-      <g-button>点我</g-button>
-    </g-popover>
-  </div>
-  <div class="popover-wrapper" @click='yyy'>
-    <g-popover trigger='hover'>
-      <p slot='content'>点击展开看这个</p>
-      <g-button>点我</g-button>
-    </g-popover>
-    
-    <g-popover position='bottom' trigger='hover'>
-      <p slot='content'>点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个</p>
-      <g-button>点我</g-button>
-    </g-popover>
-    
-    <g-popover position='left' trigger='hover'>
-      <p slot='content'>点击展开看这个</p>
-      <g-button>点我</g-button>
-    </g-popover>
-    
-    <g-popover position='right' trigger='hover'>
-      <p slot='content'>点击展开看这个</p>
-      <g-button>点我</g-button>
-    </g-popover>
-  </div>
+  <g-collapse :selected='["china"]'>
+    <g-collapse-item title='中国' name='china'>年纪很大</g-collapse-item>
+    <g-collapse-item title='美国' name='america'>年纪很小</g-collapse-item>
+    <g-collapse-item title='英国' name='america'>大帝国</g-collapse-item>
+  </g-collapse>
+<!--  <div class="popover-wrapper" @click='yyy'>-->
+<!--    <g-popover>-->
+<!--      <p slot='content'>点击展开看这个</p>-->
+<!--      <g-button>点我</g-button>-->
+<!--    </g-popover>-->
+<!--  -->
+<!--    <g-popover position='bottom'>-->
+<!--      <p slot='content'>点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个点击展开看这个</p>-->
+<!--      <g-button>点我</g-button>-->
+<!--    </g-popover>-->
+<!--  -->
+<!--    <g-popover position='left'>-->
+<!--      <p slot='content'>点击展开看这个</p>-->
+<!--      <g-button>点我</g-button>-->
+<!--    </g-popover>-->
+<!--  -->
+<!--    <g-popover position='right'>-->
+<!--      <p slot='content'>点击展开看这个</p>-->
+<!--      <g-button>点我</g-button>-->
+<!--    </g-popover>-->
+<!--  </div>-->
 <!--  <g-tabs :selected.sync='selectTab'>-->
 <!--    <g-tabs-head>-->
 <!--      <g-tabs-item name='fontEnd' disabled>-->

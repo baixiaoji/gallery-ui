@@ -18,6 +18,8 @@ import TabItem from './tabs/tabs-item';
 import TabBody from './tabs/tabs-body';
 import TabPane from './tabs/tabs-pane';
 import Popover from './popover';
+import Collapse from './collapse';
+import CollapseItem from './collapse-item';
 
 Vue.component('g-button', Button);
 Vue.component('g-icon', Icon);
@@ -37,6 +39,8 @@ Vue.component('g-tabs-item', TabItem);
 Vue.component('g-tabs-body', TabBody);
 Vue.component('g-tabs-pane', TabPane);
 Vue.component('g-popover', Popover);
+Vue.component('g-collapse', Collapse);
+Vue.component('g-collapse-item', CollapseItem);
 
 Vue.use(plugin);
 
