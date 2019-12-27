@@ -18,8 +18,8 @@ import TabItem from './tabs/tabs-item';
 import TabBody from './tabs/tabs-body';
 import TabPane from './tabs/tabs-pane';
 import Popover from './popover';
-import Collapse from './collapse';
-import CollapseItem from './collapse-item';
+import Collapse from './collapse/collapse';
+import CollapseItem from './collapse/collapse-item';
 
 Vue.component('g-button', Button);
 Vue.component('g-icon', Icon);
