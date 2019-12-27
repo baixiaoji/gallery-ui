@@ -13,6 +13,10 @@
       selected: {
         type: Array,
       },
+      single: {
+        type: Boolean,
+        default: false,
+      },
     },
     data() {
       return {
@@ -28,8 +32,13 @@
       this.eventBus.$emit('update:selected', this.selected);
 
       this.eventBus.$on('addItem', (name) => {
-        const selectArray = JSON.parse(JSON.stringify(this.selected));
-        selectArray.push(name);
+        let selectArray = JSON.parse(JSON.stringify(this.selected));
+        if (this.single) {
+          selectArray = [name];
+        } else {
+          selectArray.push(name);
+        }
+        
         this.eventBus.$emit('update:selected', selectArray);
         this.$emit('update:selected', selectArray);
       });
