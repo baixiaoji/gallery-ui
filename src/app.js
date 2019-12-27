@@ -53,6 +53,7 @@ new Vue({
       loading2: false,
       loading3: false,
       selectTab: 'operation',
+      selectedTab: ["china"],
     };
   },
   methods: {
