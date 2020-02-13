@@ -33,14 +33,7 @@
 </script>
 
 <style lang='scss'>
-  $font-size: 14px;
-  $button-height: 32px;
-  $button-bg: white;
-  $button-active-bg: #eee;
-  $border-radius: 4px;
-  $color: #333;
-  $border-color: #999;
-  $border-color-hover: #666;
+  @import "var";
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -56,7 +49,6 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border-color: $border-color-hover;
     vertical-align: middle;
     cursor: pointer;
     
