@@ -20,6 +20,7 @@ import TabPane from './tabs/tabs-pane';
 import Popover from './popover';
 import Collapse from './collapse/collapse';
 import CollapseItem from './collapse/collapse-item';
+import Cascader from './cascader/cascader';
 
 Vue.component('g-button', Button);
 Vue.component('g-icon', Icon);
@@ -41,6 +42,7 @@ Vue.component('g-tabs-pane', TabPane);
 Vue.component('g-popover', Popover);
 Vue.component('g-collapse', Collapse);
 Vue.component('g-collapse-item', CollapseItem);
+Vue.component('g-cascader', Cascader);
 
 Vue.use(plugin);
 
@@ -48,12 +50,49 @@ new Vue({
   el: '#app',
   data(){
     return {
-      message: 'show',
-      loading1: false,
-      loading2: false,
-      loading3: false,
-      selectTab: 'operation',
-      selectedTab: ["china"],
+      source: [{
+        name: '浙江',
+        children: [
+          {
+            name: '杭州',
+            children: [
+              {name: '上城'},
+              {name: '下城'},
+              {name: '江干'},
+            ]
+          },
+          {
+            name: '嘉兴',
+            children: [
+              {name: '南湖'},
+              {name: '秀洲'},
+              {name: '嘉善'},
+            ]
+          },
+        ]
+      }, {
+        name: '福建',
+        children: [
+          {
+            name: '福州',
+            children: [
+              {name: '鼓楼'},
+              {name: '台江'},
+              {name: '仓山'},
+            ]
+          },
+        ]
+      }, {
+        name: '安徽',
+        children: [{
+          name: '合肥',
+          children: [{
+            name: '瑶海'
+          }, {
+            name: '庐阳'
+          }]
+        }]
+      }],
     };
   },
   methods: {

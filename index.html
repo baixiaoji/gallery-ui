@@ -44,11 +44,16 @@
 </head>
 <body>
 <div id="app">
-  <g-collapse :selected.sync='selectedTab' single>
-    <g-collapse-item title='中国' name='china'>年纪很大</g-collapse-item>
-    <g-collapse-item title='美国' name='america'>年纪很小</g-collapse-item>
-    <g-collapse-item title='英国' name='england'>大帝国</g-collapse-item>
-  </g-collapse>
+  <div>
+    <div>eeeeeee</div>
+    <g-cascader :source='source'></g-cascader>
+    <div>2222222222222</div>
+  </div>
+<!--  <g-collapse :selected.sync='selectedTab' single>-->
+<!--    <g-collapse-item title='中国' name='china'>年纪很大</g-collapse-item>-->
+<!--    <g-collapse-item title='美国' name='america'>年纪很小</g-collapse-item>-->
+<!--    <g-collapse-item title='英国' name='england'>大帝国</g-collapse-item>-->
+<!--  </g-collapse>-->
 <!--  <div class="popover-wrapper" @click='yyy'>-->
 <!--    <g-popover>-->
 <!--      <p slot='content'>点击展开看这个</p>-->
