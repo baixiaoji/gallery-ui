@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div>eeeeeee</div>
-    <g-cascader :source='source' popover-height='300px'/>
+    <div>{{selectArray}}</div>
+    <g-cascader :source='source' popover-height='300px' :selected.sync="selectArray"/>
     <div>2222222222222</div>
   </div>
 </template>
@@ -15,6 +15,7 @@
     },
     data(){
       return {
+        selectArray: [],
         source: [{
           name: '浙江',
           children: [

@@ -2,13 +2,16 @@
   <div class='cascaderItem' :style='{height}'>
     {{ level }}
     <div class='left'>
-      <div class='label' v-for='item in items' :key='item.name' @click='leftSelected = item'>
+      <div class='label' v-for='item in items' :key='item.name' @click='onClickLabel(item)'>
         {{ item.name }}
         <icon class="icon" v-if="item.children" name="right"/>
       </div>
     </div>
     <div class='right' v-if='rightItems'>
-      <GUI-Cascader-Items :items='rightItems' :level='level+1' :height='height'/>
+      <GUI-Cascader-Items :items='rightItems' :level='level+1'
+                          :height='height' :selected="selected"
+                          @update:selected="onUpdateSelected"
+      />
     </div>
   </div>
 </template>
@@ -30,6 +33,10 @@
       items: {
         type: Array,
       },
+      selected: {
+        type: Array,
+        default: () => [],
+      },
       level: {
         type: Number,
         default: 0,
@@ -40,14 +47,24 @@
     },
     computed: {
       rightItems () {
-        if (this.leftSelected && this.leftSelected.children) {
-          return this.leftSelected.children
+        let currentSelected = this.selected[this.level];
+        if (currentSelected && currentSelected.children) {
+          return currentSelected.children
         } else {
           return null
         }
       }
     },
-    methods: {},
+    methods: {
+      onClickLabel(item) {
+        let copy = JSON.parse(JSON.stringify(this.selected));
+        copy[this.level] = item;
+        this.$emit('update:selected', copy)
+      },
+      onUpdateSelected(newSelected) {
+        this.$emit('update:selected', newSelected)
+      },
+    },
   };
 </script>
 
