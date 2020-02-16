@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>{{selectArray}}</div>
-    <g-cascader :source='source' popover-height='300px' :selected.sync="selectArray"/>
+    <g-cascader :source.sync='source' popover-height='300px' :selected.sync="selectArray"
+                :loadData='loadData'
+    />
     <div>2222222222222</div>
   </div>
 </template>
