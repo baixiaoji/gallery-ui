@@ -1,6 +1,5 @@
 <template>
   <div class='cascaderItem' :style='{height}'>
-    {{ level }}
     <div class='left'>
       <div class='label' v-for='item in items' :key='item.name' @click='onClickLabel(item)'>
         {{ item.name }}
@@ -59,6 +58,7 @@
       onClickLabel(item) {
         let copy = JSON.parse(JSON.stringify(this.selected));
         copy[this.level] = item;
+        copy.splice(this.level + 1);
         this.$emit('update:selected', copy)
       },
       onUpdateSelected(newSelected) {
