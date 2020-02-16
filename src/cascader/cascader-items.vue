@@ -76,10 +76,14 @@
     align-items: flex-start;
     justify-content: flex-start;
     height: 100px;
+    overflow: hidden;
     .left {
+      height: 100%;
       padding: .3em 0;
+      overflow: auto;
     }
     .right {
+      height: 100%;
       border-left: 1px solid $border-color-light;
     }
     .label {
