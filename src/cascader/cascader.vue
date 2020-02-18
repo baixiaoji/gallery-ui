@@ -1,6 +1,6 @@
 <template>
-  <div class='cascader'>
-    <div class='trigger' @click='popoverVisible = !popoverVisible'>
+  <div class='cascader' v-click-out-side='close'>
+    <div class='trigger' @click='togglePopoverVisible'>
       {{result || '&nbsp;'}}
     </div>
     <div class='popover-wrapper' v-if='popoverVisible'>
@@ -15,11 +15,15 @@
 
 <script>
   import CascaderItems from './cascader-items.vue';
+  import clickOutSide from './click-outside';
 
   export default {
     name: 'GUI-Cascader',
     components: {
       'cascader-items': CascaderItems,
+    },
+    directives: {
+      clickOutSide,
     },
     data() {
       return {
@@ -47,6 +51,19 @@
       },
     },
     methods: {
+      open() {
+        this.popoverVisible = true;
+      },
+      close() {
+        this.popoverVisible = false;
+      },
+      togglePopoverVisible() {
+        if (this.popoverVisible === true) {
+          this.close()
+        }else {
+          this.open();
+        }
+      },
       onUpdateSelected(newSelected) {
         this.$emit('update:selected', newSelected);
         const lastItem = newSelected[newSelected.length - 1];
@@ -88,7 +105,7 @@
           toUpdate.children = result;
           this.$emit('update:source', copy);
         };
-        if (!lastItem.isLeaf) {
+        if (!lastItem.isLeaf && this.loadData) {
           this.loadData(lastItem, updateSource);
         }
       },
@@ -100,6 +117,7 @@
   @import "src/var";
   
   .cascader {
+    display: inline-block;
     position: relative;
     
     .trigger {

@@ -77,9 +77,9 @@
       };
     },
     created() {
-      // ajax(0).then(result => {
-      //   this.source = result;
-      // });
+      ajax(0).then(result => {
+        this.source = result;
+      });
     },
     methods: {
       loadData({id}, updateSource) {
