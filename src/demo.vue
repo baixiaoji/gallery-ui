@@ -16,6 +16,9 @@
     return new Promise((success, fail) => {
       setTimeout(() => {
         let result = db.filter((item) => item.parent_id == parentId);
+        result.forEach(item => {
+          item.isLeaf = db.filter(data => data.parent_id === item.id).length > 0;
+        });
         success(result)
       }, 300)
     })
