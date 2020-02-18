@@ -3,12 +3,13 @@
     <div class='left'>
       <div class='label' v-for='item in items' :key='item.name' @click='onClickLabel(item)'>
         <span class='name'>{{ item.name }}</span>
-        <icon class="icon" v-if="item.isLeaf" name="right"/>
+        <icon class="icon" v-if="leftArrowVisible(item)" name="right"/>
       </div>
     </div>
     <div class='right' v-if='rightItems'>
       <GUI-Cascader-Items :items='rightItems' :level='level+1'
                           :height='height' :selected="selected"
+                          :load-data='loadData'
                           @update:selected="onUpdateSelected"
       />
     </div>
@@ -43,6 +44,9 @@
       height: {
         type: String,
       },
+      loadData: {
+        type: Function,
+      }
     },
     computed: {
       rightItems () {
@@ -64,6 +68,9 @@
       onUpdateSelected(newSelected) {
         this.$emit('update:selected', newSelected)
       },
+      leftArrowVisible(item) {
+        return this.loadData ? !item.isLeaf : item.children;
+      }
     },
   };
 </script>
