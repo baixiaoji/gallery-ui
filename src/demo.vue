@@ -1,99 +1,49 @@
 <template>
-  <div>
-    
-    <g-cascader :source.sync='source' popover-height='300px' :selected.sync="selectArray"
-                :loadData='loadData'
-    />
-    <div>{{selectArray}}</div>
-  </div>
+    <g-slides :selected='selected'>
+      <g-slide-item name='1'>
+        <div class="box">1</div>
+      </g-slide-item>
+      <g-slide-item name='2'>
+        <div class="box">2</div>
+      </g-slide-item>
+      <g-slide-item name='3'>
+        <div class="box">3</div>
+      </g-slide-item>
+    </g-slides>
 </template>
 
 <script>
-  import Cascader from './cascader/cascader.vue';
-  import db from './db.js';
-
-  function ajax(parentId = 0) {
-    return new Promise((success, fail) => {
-      setTimeout(() => {
-        let result = db.filter((item) => item.parent_id == parentId);
-        result.forEach(item => {
-          item.isLeaf = !db.filter(data => data.parent_id === item.id).length > 0;
-        });
-        success(result);
-      }, 300);
-    });
-  }
-
+  import GSlides from './slides';
+  import GSlideItem from './slide-item';
   export default {
     components: {
-      'g-cascader': Cascader,
+      GSlides,
+      GSlideItem,
     },
     data() {
       return {
-        selectArray: [],
-        source: [{
-          name: '浙江',
-          children: [
-            {
-              name: '杭州',
-              children: [
-                {name: '上城'},
-                {name: '下城'},
-                {name: '江干'},
-              ]
-            },
-            {
-              name: '嘉兴',
-              children: [
-                {name: '南湖'},
-                {name: '秀洲'},
-                {name: '嘉善'},
-              ]
-            },
-          ]
-        }, {
-          name: '福建',
-          children: [
-            {
-              name: '福州',
-              children: [
-                {name: '鼓楼'},
-                {name: '台江'},
-                {name: '仓山'},
-              ]
-            },
-          ]
-        }, {
-          name: '安徽',
-          children: [{
-            name: '合肥',
-            children: [{
-              name: '瑶海'
-            }, {
-              name: '庐阳'
-            }]
-          }]
-        }],
-      };
+        selected: '1',
+      }
     },
-    created() {
-      ajax(0).then(result => {
-        this.source = result;
-      });
-    },
-    methods: {
-      loadData({id}, updateSource) {
-        ajax(id).then(result => {
-          updateSource(result); // 回调:把别人传给我的函数调用一下
-        });
-      },
+    mounted() {
+      let n = 1;
+      setInterval(() => {
+        if (n>3) {n=1}
+        this.selected = n.toString();
+        n++;
+      }, 1500)
     },
   };
 </script>
 
 <style lang='scss'>
   * {margin: 0; padding: 0; box-sizing: border-box;}
-  
+  .box {
+    width: 200px;
+    height: 150px;
+    background-color: #ddd;
+    border: 1px solid red;
+  }
   :root {
     --button-height: 32px;
     --font-size: 14px;
