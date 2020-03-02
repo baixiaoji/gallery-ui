@@ -6,7 +6,10 @@
       </div>
     </div>
     <div class='g-slides-dots'>
-      <span v-for='n in childrenLength' @click='select(n-1)'>{{ n - 1 }}</span>
+      <span v-for='n in childrenLength' @click='select(n-1)'
+            :class='{active: selectedIndex === n -1}'>
+        {{ n - 1 }}
+      </span>
     </div>
   </div>
 </template>
@@ -32,11 +35,15 @@
       names() {
         return this.$children.map(vm => vm.name);
       },
+      selectedIndex() {
+        return this.names.indexOf(this.selected);
+      },
     },
     mounted() {
       this.updateChildren();
       this.playAutomatically();
       this.childrenLength = this.$children.length;
+      this.lastSelectedIndex = this.selectedIndex;
     },
     updated() {
       this.updateChildren();
@@ -63,6 +70,7 @@
         }, 3000)
       },
       select(index) {
+        this.lastSelectedIndex = this.selectedIndex;
         this.$emit('update:selected', this.names[index]);
       },
       getSelected() {
@@ -73,7 +81,7 @@
         const selected = this.getSelected();
         this.$children.forEach((vm) => {
           vm.selected = selected;
-          vm.reverse = false;
+          vm.reverse = this.lastSelectedIndex > this.selectedIndex ? true : false;
         });
       },
     },
@@ -89,6 +97,14 @@
     
     &-wrapper {
       position: relative;
+    }
+    
+    &-dots {
+      > span {
+        &.active {
+          background: red;
+        }
+      }
     }
   }
 </style>
