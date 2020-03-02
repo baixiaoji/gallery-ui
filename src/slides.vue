@@ -91,6 +91,7 @@
         this.$children.forEach((vm) => {
           
           let reverse = this.lastSelectedIndex > this.selectedIndex ? true : false;
+          // 定时器存在特殊处理左右边界
           if (this.timerId) {
             if (this.lastSelectedIndex === this.names.length -1 && this.selectedIndex === 0) {
               reverse = false;
