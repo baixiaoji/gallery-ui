@@ -1,5 +1,5 @@
 <template>
-  <div class='g-slides'>
+  <div class='g-slides' @mouseenter='onMouseEnter' @mouseleave='onMouseLeave'>
     <div class="g-slides-window">
       <div class="g-slides-wrapper">
         <slot/>
@@ -29,6 +29,7 @@
       return {
         childrenLength: 0,
         lastSelectedIndex: undefined,
+        timerId: null,
       };
     },
     computed: {
@@ -49,9 +50,17 @@
       this.updateChildren();
     },
     methods: {
+      onMouseEnter() {
+        this.pause();
+      },
+      onMouseLeave() {
+        this.playAutomatically();
+      },
       playAutomatically() {
+        if (this.timerId) {return}
+        
         const run = () => {
-          const index = this.names.indexOf(this.selected);
+          const index = this.names.indexOf(this.getSelected());
           let newIndex = index + 1;
           if (newIndex === this.names.length) {
             newIndex = 0
@@ -60,14 +69,14 @@
             newIndex = this.names.length - 1;
           }
           this.select(newIndex);
-          setTimeout(() => {
-            run();
-          }, 3000)
+          this.timerId = setTimeout(run, 3000)
         };
         
-        setTimeout(() => {
-          run();
-        }, 3000)
+        this.timerId = setTimeout(run, 3000)
+      },
+      pause() {
+        clearTimeout(this.timerId);
+        this.timerId = null;
       },
       select(index) {
         this.lastSelectedIndex = this.selectedIndex;
@@ -80,8 +89,20 @@
       updateChildren() {
         const selected = this.getSelected();
         this.$children.forEach((vm) => {
-          vm.selected = selected;
-          vm.reverse = this.lastSelectedIndex > this.selectedIndex ? true : false;
+          
+          let reverse = this.lastSelectedIndex > this.selectedIndex ? true : false;
+          if (this.timerId) {
+            if (this.lastSelectedIndex === this.names.length -1 && this.selectedIndex === 0) {
+              reverse = false;
+            }
+            if (this.lastSelectedIndex === 0 && this.selectedIndex === this.names.length -1 ) {
+              reverse = true;
+            }
+          }
+          vm.reverse = reverse;
+          this.$nextTick(() => {
+            vm.selected = selected;
+          })
         });
       },
     },
@@ -100,9 +121,30 @@
     }
     
     &-dots {
+      padding: 8px 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       > span {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
+        background: #ddd;
+        margin:0 8px;
+        &:hover {
+          cursor: pointer;
+        }
         &.active {
-          background: red;
+          background: black;
+          color: white;
+          &:hover {
+            cursor: default;
+          }
         }
       }
     }

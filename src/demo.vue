@@ -33,9 +33,12 @@
 <style lang='scss'>
   * {margin: 0; padding: 0; box-sizing: border-box;}
   .box {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 8em;
     height: 150px;
     background-color: #ddd;
-    border: 1px solid red;
   }
   :root {
     --button-height: 32px;
