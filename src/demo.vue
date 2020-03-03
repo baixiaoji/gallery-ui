@@ -14,7 +14,7 @@
 
 <script>
   import GSlides from './slides/slides';
-  import GSlideItem from './slides/slide-item';
+  import GSlideItem from './slides/slides-item';
   export default {
     components: {
       GSlides,

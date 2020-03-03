@@ -11,13 +11,13 @@
       </div>
     </div>
     <div class='g-slides-dots'>
-      <span  @click='onClickPrev'><g-icon name='left'/></span>
+      <span  data-action='prev' @click='onClickPrev'><g-icon name='left'/></span>
       <span v-for='n in childrenLength' @click='select(n-1)'
             :key='n' :data-index='n - 1'
             :class='{active: selectedIndex === n -1}'>
         {{ n - 1 }}
       </span>
-      <span  @click='onClickNext'><g-icon name='right'/></span>
+      <span data-action='next' @click='onClickNext'><g-icon name='right'/></span>
     </div>
   </div>
 </template>
@@ -76,7 +76,6 @@
     methods: {
       onClickPrev() {
         this.select(this.selectedIndex -1);
-        console.log('in');
       },
       onClickNext() {
         this.select(this.selectedIndex + 1);
@@ -88,7 +87,6 @@
         this.playAutomatically();
       },
       onTouchStart(e) {
-        console.log('开始移动');
         this.startTouch = e.touches[0];
         this.pause();
       },
@@ -116,7 +114,7 @@
         if (this.timerId) {return}
         
         const run = () => {
-          const index = this.items.indexOf(this.getSelected());
+          const index = this.names.indexOf(this.getSelected());
           let newIndex = index + 1;
           this.select(newIndex);
           this.timerId = setTimeout(run, this.autoPlayDelay)
