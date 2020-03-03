@@ -124,7 +124,6 @@ describe('Slides.vue', () => {
       },
     });
     setTimeout(() => {
-      console.log(wrapper.html());
       expect(callback).to.have.been.calledWith('2');
       done();
     }, 21);
