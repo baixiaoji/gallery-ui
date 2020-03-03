@@ -13,6 +13,7 @@
     <div class='g-slides-dots'>
       <span  @click='onClickPrev'><g-icon name='left'/></span>
       <span v-for='n in childrenLength' @click='select(n-1)'
+            :key='n' :data-index='n - 1'
             :class='{active: selectedIndex === n -1}'>
         {{ n - 1 }}
       </span>
@@ -22,7 +23,7 @@
 </template>
 
 <script>
-  import icon from './icon';
+  import icon from '../icon';
   
   export default {
     name: 'GUI-Slide',
@@ -35,6 +36,10 @@
       },
       autoPlay: {
         type: Boolean,
+      },
+      autoPlayDelay: {
+        type: Number,
+        default: 3000,
       },
     },
     data() {
@@ -59,7 +64,9 @@
     },
     mounted() {
       this.updateChildren();
-      this.playAutomatically();
+      if (this.autoPlay) {
+        this.playAutomatically();
+      }
       this.childrenLength = this.items.length;
       this.lastSelectedIndex = this.selectedIndex;
     },
@@ -112,10 +119,10 @@
           const index = this.items.indexOf(this.getSelected());
           let newIndex = index + 1;
           this.select(newIndex);
-          this.timerId = setTimeout(run, 3000)
+          this.timerId = setTimeout(run, this.autoPlayDelay)
         };
         
-        this.timerId = setTimeout(run, 3000)
+        this.timerId = setTimeout(run, this.autoPlayDelay)
       },
       pause() {
         clearTimeout(this.timerId);

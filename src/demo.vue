@@ -13,8 +13,8 @@
 </template>
 
 <script>
-  import GSlides from './slides';
-  import GSlideItem from './slide-item';
+  import GSlides from './slides/slides';
+  import GSlideItem from './slides/slide-item';
   export default {
     components: {
       GSlides,
