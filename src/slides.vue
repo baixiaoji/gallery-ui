@@ -3,7 +3,6 @@
        @mouseenter='onMouseEnter'
        @mouseleave='onMouseLeave'
        @touchstart='onTouchStart'
-       @touchmove='onTouchMove'
        @touchend='onTouchEnd'
   >
     <div class="g-slides-window">
@@ -12,17 +11,24 @@
       </div>
     </div>
     <div class='g-slides-dots'>
+      <span  @click='onClickPrev'><g-icon name='left'/></span>
       <span v-for='n in childrenLength' @click='select(n-1)'
             :class='{active: selectedIndex === n -1}'>
         {{ n - 1 }}
       </span>
+      <span  @click='onClickNext'><g-icon name='right'/></span>
     </div>
   </div>
 </template>
 
 <script>
+  import icon from './icon';
+  
   export default {
     name: 'GUI-Slide',
+    components: {
+      'g-icon': icon,
+    },
     props: {
       selected: {
         type: String,
@@ -41,23 +47,33 @@
     },
     computed: {
       names() {
-        return this.$children.map(vm => vm.name);
+        return this.items.map(vm => vm.name);
       },
       selectedIndex() {
         const index = this.names.indexOf(this.selected);
         return  index === -1 ? 0 : index;
       },
+      items() {
+        return this.$children.filter(vm => vm.$options.name === 'GUI-Slide-Item');
+      },
     },
     mounted() {
       this.updateChildren();
       this.playAutomatically();
-      this.childrenLength = this.$children.length;
+      this.childrenLength = this.items.length;
       this.lastSelectedIndex = this.selectedIndex;
     },
     updated() {
       this.updateChildren();
     },
     methods: {
+      onClickPrev() {
+        this.select(this.selectedIndex -1);
+        console.log('in');
+      },
+      onClickNext() {
+        this.select(this.selectedIndex + 1);
+      },
       onMouseEnter() {
         this.pause();
       },
@@ -69,24 +85,19 @@
         this.startTouch = e.touches[0];
         this.pause();
       },
-      onTouchMove() {},
       onTouchEnd(e) {
         const endTouch = e.changedTouches[0];
-        console.log(endTouch);
         const {clientX: x1,clientY:y1} = this.startTouch;
         const {clientX: x2,clientY:y2} = endTouch;
+        
         const distance = Math.sqrt(Math.pow(x1-x2, 2) + Math.pow(y1-y2, 2));
-        console.log('distance');
-        console.log(distance);
         const deltaY = Math.abs(y1-y2);
         const rate = distance / deltaY;
-        console.log(rate);
+        
         if (rate > 2) {
           if (x2 > x1) {
-            console.log('right');
             this.select(this.selectedIndex -1);
           }else {
-            console.log('left');
             this.select(this.selectedIndex + 1);
           }
         }
@@ -98,7 +109,7 @@
         if (this.timerId) {return}
         
         const run = () => {
-          const index = this.names.indexOf(this.getSelected());
+          const index = this.items.indexOf(this.getSelected());
           let newIndex = index + 1;
           this.select(newIndex);
           this.timerId = setTimeout(run, 3000)
@@ -121,20 +132,20 @@
         this.$emit('update:selected', this.names[newIndex ]);
       },
       getSelected() {
-        const first = this.$children[0];
+        const first = this.items[0];
         return this.selected || first.name;
       },
       updateChildren() {
         const selected = this.getSelected();
-        this.$children.forEach((vm) => {
+        this.items.forEach((vm) => {
           
-          let reverse = this.lastSelectedIndex > this.selectedIndex ? true : false;
+          let reverse = this.selectedIndex > this.lastSelectedIndex ? false : true;
           // 定时器存在特殊处理左右边界
           if (this.timerId) {
-            if (this.lastSelectedIndex === this.names.length -1 && this.selectedIndex === 0) {
+            if (this.lastSelectedIndex === this.items.length -1 && this.selectedIndex === 0) {
               reverse = false;
             }
-            if (this.lastSelectedIndex === 0 && this.selectedIndex === this.names.length -1 ) {
+            if (this.lastSelectedIndex === 0 && this.selectedIndex === this.items.length -1 ) {
               reverse = true;
             }
           }
