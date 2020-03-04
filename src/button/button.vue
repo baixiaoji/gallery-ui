@@ -33,7 +33,7 @@
 </script>
 
 <style lang='scss'>
-  @import "src/var";
+  @import "../var";
   
   .g-button {
     font-size: $font-size;

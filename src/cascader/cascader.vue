@@ -117,7 +117,7 @@
 </script>
 
 <style scoped lang='scss'>
-  @import "src/var";
+  @import "../var";
   
   .cascader {
     display: inline-block;
