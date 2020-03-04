@@ -3,7 +3,7 @@ import sinon, {xhr} from 'sinon';
 import sinonChai from 'sinon-chai';
 import {mount, shallowMount} from '@vue/test-utils';
 chai.use(sinonChai);
-import Toast from '@/toast';
+import Toast from '../../src//toast';
 
 describe('Toast', () => {
 

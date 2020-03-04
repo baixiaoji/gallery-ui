@@ -4,7 +4,7 @@ import sinonChai from 'sinon-chai';
 import {createLocalVue, mount, shallowMount} from '@vue/test-utils';
 chai.use(sinonChai);
 
-import TabsItem from '@/tabs/tabs-item';
+import TabsItem from '../../src/tabs/tabs-item';
 
 const localVue = createLocalVue();
 describe('Toast', () => {

@@ -5,7 +5,7 @@ import {mount, shallowMount} from '@vue/test-utils';
 
 chai.use(sinonChai);
 import Vue from 'vue';
-import Input from '@/input';
+import Input from '../../src/input';
 
 describe('Input', () => {
 

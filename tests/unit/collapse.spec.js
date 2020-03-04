@@ -4,8 +4,8 @@ import sinonChai from 'sinon-chai';
 import {mount} from '@vue/test-utils';
 
 chai.use(sinonChai);
-import Collapse from '@/collapse/collapse';
-import CollapseItem from '@/collapse/collapse-item';
+import Collapse from '../../src/collapse/collapse';
+import CollapseItem from '../../src/collapse/collapse-item';
 
 
 describe('Collapse', () => {

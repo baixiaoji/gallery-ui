@@ -3,7 +3,7 @@ import sinonChai from 'sinon-chai';
 import {mount} from '@vue/test-utils';
 chai.use(sinonChai);
 
-import Col from '@/grid/col';
+import Col from '../../src/grid/col';
 
 describe('Col', () => {
 

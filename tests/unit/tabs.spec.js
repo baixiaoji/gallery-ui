@@ -3,12 +3,12 @@ import sinonChai from 'sinon-chai';
 import {mount} from '@vue/test-utils';
 chai.use(sinonChai);
 
-import Tabs from '@/tabs/tabs';
+import Tabs from '../../src/tabs/tabs';
 
-import TabHead from '@/tabs/tabs-head';
-import TabItem from '@/tabs/tabs-item';
-import TabBody from '@/tabs/tabs-body';
-import TabPane from '@/tabs/tabs-pane';
+import TabHead from '../../src/tabs/tabs-head';
+import TabItem from '../../src/tabs/tabs-item';
+import TabBody from '../../src/tabs/tabs-body';
+import TabPane from '../../src/tabs/tabs-pane';
 
 
 describe('Tabs', () => {

@@ -4,8 +4,8 @@ import sinonChai from 'sinon-chai';
 import {mount, shallowMount} from '@vue/test-utils';
 
 chai.use(sinonChai);
-import Row from '@/grid/row';
-import Col from '@/grid/col';
+import Row from '../../src/grid/row';
+import Col from '../../src/grid/col';
 
 
 describe('Row', () => {

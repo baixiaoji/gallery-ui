@@ -9,7 +9,7 @@
 </template>
 
 <script>
-  import icon from './icon';
+  import icon from '../icon';
   export default {
     name: 'gallery-button',
     components: {
@@ -33,7 +33,7 @@
 </script>
 
 <style lang='scss'>
-  @import "var";
+  @import "src/var";
   
   .g-button {
     font-size: $font-size;
