@@ -1,28 +1,31 @@
 <template>
-    <g-slides :selected.sync='selected'>
-      <g-slide-item name='1'>
-        <div class="box">1</div>
-      </g-slide-item>
-      <g-slide-item name='hi'>
-        <div class="box">2</div>
-      </g-slide-item>
-      <g-slide-item name='world'>
-        <div class="box">3</div>
-      </g-slide-item>
-    </g-slides>
+  <g-nav :selected.sync='selected'>
+    <g-nav-item name='home'>首页</g-nav-item>
+    <g-nav-item name='about'>关于我们</g-nav-item>
+    <g-nav-sub>
+      <template slot='title'>更多信息</template>
+      <g-nav-item name='culture'>企业文化</g-nav-item>
+      <g-nav-item name='art'>公司架构</g-nav-item>
+    </g-nav-sub>
+
+  </g-nav>
 </template>
 
 <script>
-  import GSlides from './slides/slides';
-  import GSlideItem from './slides/slides-item';
+  import GNav from './nav/nav';
+  import GNavItem from './nav/nav-item';
+  import GNavSub from './nav/nav-sub';
+  
+  
   export default {
     components: {
-      GSlides,
-      GSlideItem,
+      GNav,
+      GNavItem,
+      GNavSub,
     },
     data() {
       return {
-        selected: '1',
+        selected: ['home'],
       }
     },
     mounted() {
