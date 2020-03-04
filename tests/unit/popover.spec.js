@@ -4,7 +4,7 @@ import {mount} from '@vue/test-utils';
 
 chai.use(sinonChai);
 
-import Popover from '../../src/popover';
+import Popover from '../../src/popover/popover';
 
 describe('Popover', () => {
   it('存在.', () => {
