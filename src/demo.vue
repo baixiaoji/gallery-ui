@@ -5,7 +5,17 @@
     <g-nav-sub>
       <template slot='title'>更多信息</template>
       <g-nav-item name='culture'>企业文化</g-nav-item>
-      <g-nav-item name='art'>公司架构</g-nav-item>
+      <g-nav-sub>
+        <template slot='title'>公司架构</template>
+        <g-nav-item name='d'>董事会</g-nav-item>
+        <g-nav-item name='p'>行政团队</g-nav-item>
+        <g-nav-sub>
+          <template slot='title'>技术团队</template>
+          <g-nav-item name='fe'>前端</g-nav-item>
+          <g-nav-item name='fb'>后端</g-nav-item>
+        </g-nav-sub>
+      </g-nav-sub>
+      
     </g-nav-sub>
 
   </g-nav>
