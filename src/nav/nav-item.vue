@@ -7,6 +7,7 @@
 <script>
   export default {
     name: 'Gui-NavItem',
+    inject: ['root'],
     props: {
       name: {
         type: String,
@@ -17,6 +18,9 @@
       return {
         selected: false,
       };
+    },
+    created() {
+      this.root && this.root.addItem(this)
     },
     methods: {
       onClick() {
@@ -29,6 +33,7 @@
 <style scoped lang='scss'>
   .g-nav-item {
     padding: 10px 20px;
+    
     &.active {
       background: red;
       color: white;
