@@ -20,7 +20,7 @@
       };
     },
     created() {
-      this.root && this.root.addItem(this)
+      this.root && this.root.addItem(this);
     },
     methods: {
       onClick() {
@@ -31,12 +31,28 @@
 </script>
 
 <style scoped lang='scss'>
+  @import "../var";
+  
   .g-nav-item {
     padding: 10px 20px;
+    position: relative;
     
     &.active {
-      background: red;
-      color: white;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom: 2px solid $blue;
+        width: 100%;
+      }
     }
+    .g-sub-nav .g-nav-item {
+      &.active {
+        color: $color;
+        &::after {
+          display: none;
+        }
+      }	    }
   }
 </style>

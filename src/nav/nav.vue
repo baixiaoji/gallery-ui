@@ -66,8 +66,11 @@
 </script>
 
 <style scoped lang='scss'>
+  @import "../var";
   .g-nav {
     display: flex;
-    background: #ddd;
+    border-bottom: 1px solid $grey;
+    color: $color;
+    cursor: default;
   }
 </style>

@@ -27,15 +27,25 @@
 </script>
 
 <style scoped lang='scss'>
+  @import "../var";
+  
   .g-nav-sub {
     position: relative;
-    padding: 10px 20px;
+    > span {
+      display: block;
+      padding: 10px 20px;
+    }
     &-popover {
+      background: white;
       position: absolute;
       top:100%;
       left:0;
-      border: 1px solid red;
       white-space: nowrap;
+      box-shadow: 0 0 3px fade_out(black, 0.8);
+      border-radius: $border-radius;
+      font-size: $font-size;
+      color: $light-color;
+      min-width: 8em;
     }
   }
   .g-nav-sub-popover > .g-nav-sub > .g-nav-sub-popover {
