@@ -24,7 +24,8 @@
     "sass-loader": "^8.0.0",
     "sinon": "^9.0.0",
     "sinon-chai": "^3.5.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.4.1"
   },
   "postcss": {
     "plugins": {
